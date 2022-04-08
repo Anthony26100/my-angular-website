@@ -2,39 +2,26 @@
     <div class="row">
       <div class="col">
         <h2 class="text-center">Portfolio</h2>
+        <h3 class="text-center">This is a Chuck Norris joke : </h3>
+        <p *ngIf="jokeNotFound; else jokeFound" class="text-center">No joke as been found...</p>
+        <ng-template #jokeFound >
+          <p class="text-center">{{joke?.value}}</p>
+        </ng-template>
+        
       </div>
     </div>
     <div class="row">
-      <div class="col-12 col-md-4 mb-2">
+      <div *ngFor="let pic of gallery" class="col-12 col-md-4 mb-2">
         <div class="card">
-            <img src="https://cdn.pixabay.com/photo/2016/11/19/14/00/code-1839406_960_720.jpg" class="card-img-top" alt="...">
+            <img [src]=" 'https://picsum.photos/id/' + pic.id + '/640/480' " class="card-img-top" [alt]=" 'Picture from' + pic.author ">
             <div class="card-body">
-              <h5 class="card-title">Card title</h5>
+              <h5 class="card-title">Picture from {{pic.author}}</h5>
               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
               <a href="#" class="btn btn-primary">Go somewhere</a>
             </div>
           </div>
       </div>
-      <div class="col-12 col-md-4 mb-2">
-        <div class="card">
-            <img src="https://cdn.pixabay.com/photo/2012/10/29/15/36/ball-63527_960_720.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-      </div>
-      <div class="col-12 col-md-4">
-        <div class="card">
-            <img src="https://cdn.pixabay.com/photo/2016/11/19/15/32/laptop-1839876_960_720.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-      </div>
+      
     </div>
 
     </section>

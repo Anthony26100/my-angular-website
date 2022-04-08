@@ -9,8 +9,20 @@
       <img [src]=" 'assets/images/'+ sourceImg " [alt]="title" class="img-fluid" (click)="changeImage()">
     </div>
     <div class="col-12 col-md-6">
-      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quos fugiat odio beatae consequuntur voluptas sit voluptatibus? Debitis maxime porro deserunt excepturi veritatis ipsum suscipit aspernatur, aliquid dolore at fugiat vitae et eos quibusdam sit nesciunt mollitia quis necessitatibus, consectetur illo facilis adipisci dolores quam. Vel culpa aperiam voluptates amet ipsum. Recusandae minima a quia doloribus nostrum omnis neque iste iure ducimus cumque porro et necessitatibus at nulla, voluptatem id, laboriosam itaque quo facere voluptates optio tenetur maiores hic atque! Veritatis dolorum ducimus voluptate unde asperiores eum fugit nostrum, necessitatibus voluptas excepturi error magnam corrupti praesentium! Beatae ratione, commodi accusantium fugit laborum officia eaque dicta dolorem pariatur quisquam minima rerum cumque quia distinctio quasi voluptatibus alias. Non qui incidunt molestiae culpa delectus recusandae, consequuntur facilis deleniti?</p>
+      <p [ngStyle]="{color: myColor}" (click)="myColor='green'">Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde tenetur reiciendis dolor illum harum recusandae ullam molestias. Qui molestiae iusto, nulla nobis ut debitis maiores atque! Laboriosam laborum illum ipsum explicabo commodi molestiae quaerat vel atque impedit perferendis quam et animi eius nihil quos labore nulla quas eos, incidunt, esse aperiam dolore! Asperiores dolor aliquam quaerat suscipit eaque itaque reprehenderit nostrum labore velit tempora vel a, voluptatibus ducimus ex adipisci dolorem autem repellendus? Ut laboriosam unde sunt, saepe blanditiis consequatur, nesciunt, minus corrupti fugiat consequuntur placeat. Delectus veritatis hic quaerat dolores earum molestias. Illo nobis ducimus ipsum, distinctio soluta totam quisquam incidunt ullam eos consectetur similique perferendis veniam dolor amet possimus, ab hic! Expedita enim commodi deleniti assumenda asperiores molestiae mollitia accusantium iure suscipit earum.</p>
+      <p [ngClass]="{'text-primary': myValue}" (click)="myValue=!myValue">Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde tenetur reiciendis dolor illum harum recusandae ullam molestias. Qui molestiae iusto, nulla nobis ut debitis maiores atque! Laboriosam laborum illum ipsum explicabo commodi molestiae quaerat vel atque impedit perferendis quam et animi eius nihil quos labore nulla quas eos, incidunt, esse aperiam dolore! Asperiores dolor aliquam quaerat suscipit eaque itaque reprehenderit nostrum labore velit tempora vel a, voluptatibus ducimus ex adipisci dolorem autem repellendus? Ut laboriosam unde sunt, saepe blanditiis consequatur, nesciunt, minus corrupti fugiat consequuntur placeat. Delectus veritatis hic quaerat dolores earum molestias. Illo nobis ducimus ipsum, distinctio soluta totam quisquam incidunt ullam eos consectetur similique perferendis veniam dolor amet possimus, ab hic! Expedita enim commodi deleniti assumenda asperiores molestiae mollitia accusantium iure suscipit earum.</p>
+      <p *ngIf="2<1; else otherParag">Ceci est affiche sous condition</p>
+      <ng-template #otherParag>Mon autre paragraphe</ng-template>
+      <div [ngSwitch]="3">
+        <p *ngSwitchCase="1">C'est 1 le case</p>
+        <p *ngSwitchCase="2">C'est 2 le case</p>
+        <p *ngSwitchCase="3">C'est 3 le case</p>
+      </div>
+      <ol>
+        <li *ngFor="let img of jsonImg">
+          <img width="50" [src]="'assets/images/'+ img.url" [alt]="img.alt">
+        </li>
+      </ol>
     </div>
-
   </div> 
   </section>

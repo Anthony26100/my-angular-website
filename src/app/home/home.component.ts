@@ -10,9 +10,16 @@ export class HomeComponent implements OnInit {
   constructor() { }
 
   title ="Home";
-
+  myColor = "red"
+  myValue = false;
   // déclaration du tableau 
   arrayImg = ['ciseaux.png','feuille.png','pierre.png'];
+  jsonImg = [{url:'ciseaux.png',
+            alt:"Avenue dans les bois...."},
+            {url:'feuille.png',
+            alt:"Avenue dans les rues"},
+            {url:'pierre.png',
+            alt:"Avenue dans les petarade"}];
   // Dévlaration de propriétés utilisées dans mon code
   randomIndex = 0;
   sourceImg = '';
