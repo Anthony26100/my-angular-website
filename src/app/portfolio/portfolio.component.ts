@@ -12,19 +12,37 @@ export class PortfolioComponent implements OnInit {
 
   joke:any;
   jokeNotFound = true;
-
   gallery:any;
+  page = 1;
+  urlPicsum = 'https://picsum.photos/v2/list?page='+this.page+'&limit=6';
+  urlChuck = 'https://api.chucknorris.io/jokes/random';
 
-  ngOnInit(): void {
-    this.http.get('https://api.chucknorris.io/jokes/random').subscribe(
-      (data) => {
-        this.joke = data;
-        this.jokeNotFound = false;
-        console.log(data);
-      }
-    
-    );
-    this.http.get('https://picsum.photos/v2/list?page=2&limit=6').subscribe(
+  nextPage(){
+    this.page = this.page + 1;
+    this.urlPicsum = 'https://picsum.photos/v2/list?page='+this.page+'&limit=6';
+    this.loadPics();
+  }
+
+  previousPage(){
+    this.page>1 ? this.page-- : null; // condition terner (pareil que if)
+    this.urlPicsum = 'https://picsum.photos/v2/list?page='+this.page+'&limit=6';
+    this.loadPics();
+  
+  }
+
+  goPage(nb:number){
+    this.page = nb;
+    this.urlPicsum = 'https://picsum.photos/v2/list?page='+this.page+'&limit=6';
+    this.loadPics();
+  
+  }
+
+  getUrl(url:string){
+    return this.http.get(url);
+  }
+
+  loadPics(){
+    this.getUrl(this.urlPicsum).subscribe(
       (data) => {
         this.gallery = data;
         console.log(data);
@@ -32,4 +50,17 @@ export class PortfolioComponent implements OnInit {
     );
   }
 
+
+  ngOnInit(): void {
+    this.getUrl(this.urlChuck).subscribe(
+      (data) => {
+        this.joke = data;
+        this.jokeNotFound = false;
+        console.log(data);
+      }
+      
+    )
+    this.loadPics();
+  }
+  
 }
