@@ -1,24 +1,46 @@
 <section class="container-fluid">
     <div class="row">
       <div class="col">
-        <h2 class="text-center">Portfolio</h2>
+        <h2 class="text-center" id="top">Portfolio</h2>
         <h3 class="text-center">This is a Chuck Norris joke : </h3>
         <p *ngIf="jokeNotFound; else jokeFound" class="text-center">No joke as been found...</p>
         <ng-template #jokeFound >
           <p class="text-center">{{joke?.value}}</p>
         </ng-template>
+        <div class="row">
+          <div class="col-12">
+            <nav aria-label="Page navigation example">
+              <ul class="pagination justify-content-center">
+                <li class="page-item" [ngClass]="{'disabled': page==1}">
+                  <a class="page-link" role="button"  (click)="loadPics('prev')" >Previous</a>
+                </li>
+                <li class="page-item" *ngIf="page>2"><a class="page-link" role="button" (click)="loadPics('',page-2)">{{page-2}}</a></li>
+                <li class="page-item" *ngIf="page>1"><a class="page-link" role="button" (click)="loadPics('',page-1)">{{page-1}}</a></li>
+                <li class="page-item active"><a class="page-link" role="button" (click)="loadPics('',page)">{{page}}</a></li>
+                <li class="page-item"><a class="page-link" role="button" (click)="loadPics('',page+1)">{{page+1}}</a></li>
+                <li class="page-item"><a class="page-link" role="button" (click)="loadPics('',page+2)">{{page+2}}</a></li>
+                <li class="page-item">
+                  <a class="page-link" role="button" (click)="loadPics('next')">Next</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
         
       </div>
+
     </div>
     <div class="row">
       <div *ngFor="let pic of gallery" class="col-12 col-md-4 mb-2">
         <div class="card">
+          <a [routerLink]="'/portfolio/'+ pic.id">
             <img [src]=" 'https://picsum.photos/id/' + pic.id + '/640/480' " class="card-img-top" [alt]=" 'Picture from' + pic.author ">
-            <div class="card-body">
-              <h5 class="card-title">Picture from {{pic.author}}</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
+          </a>
+          <div class="card-body">
+            <h5 class="card-title">Picture from {{pic.author}}</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
           </div>
       </div>
       
@@ -28,19 +50,19 @@
         <nav aria-label="Page navigation example">
           <ul class="pagination justify-content-center">
             <li class="page-item" [ngClass]="{'disabled': page==1}">
-              <a class="page-link" role="button"  (click)="previousPage()" >Previous</a>
+              <a class="page-link" role="button"  (click)="loadPics('prev')" >Previous</a>
             </li>
-            <li class="page-item" *ngIf="page>2"><a class="page-link" role="button" (click)="goPage(page-2)">{{page-2}}</a></li>
-            <li class="page-item" *ngIf="page>1"><a class="page-link" role="button" (click)="goPage(page-1)">{{page-1}}</a></li>
-            <li class="page-item active"><a class="page-link" role="button" (click)="goPage(page)">{{page}}</a></li>
-            <li class="page-item"><a class="page-link" role="button" (click)="goPage(page+1)">{{page+1}}</a></li>
-            <li class="page-item"><a class="page-link" role="button" (click)="goPage(page+2)">{{page+2}}</a></li>
+            <li class="page-item" *ngIf="page>2"><a class="page-link" role="button" (click)="loadPics('',page-2)">{{page-2}}</a></li>
+            <li class="page-item" *ngIf="page>1"><a class="page-link" role="button" (click)="loadPics('',page-1)">{{page-1}}</a></li>
+            <li class="page-item active"><a class="page-link" role="button" (click)="loadPics('',page)">{{page}}</a></li>
+            <li class="page-item"><a class="page-link" role="button" (click)="loadPics('',page+1)">{{page+1}}</a></li>
+            <li class="page-item"><a class="page-link" role="button" (click)="loadPics('',page+2)">{{page+2}}</a></li>
             <li class="page-item">
-              <a class="page-link" role="button" (click)="nextPage()">Next</a>
+              <a class="page-link" role="button" (click)="loadPics('next')">Next</a>
             </li>
           </ul>
         </nav>
       </div>
     </div>
 
-    </section>
+</section>
