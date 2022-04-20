@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ViewportScroller } from '@angular/common';
 import { ThisReceiver } from '@angular/compiler';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-portfolio',
@@ -10,19 +11,16 @@ import { ThisReceiver } from '@angular/compiler';
 })
 export class PortfolioComponent implements OnInit {
 
-  constructor(public http: HttpClient, private scroll:ViewportScroller) {}
+  constructor(public http: HttpClient, private scroll:ViewportScroller, public api:ApiService) {}
 
   joke:any;
   jokeNotFound = true;
   gallery:any;
   page = 1;
   urlPicsum='';
-  urlChuck = 'https://api.chucknorris.io/jokes/random';
-  
+  urlChuck = this.api.urlChuck;
 
-  getUrl(url:string){
-    return this.http.get(url);
-  }
+
 
   loadPics(way="",nb=this.page){
     switch(way){
@@ -38,7 +36,7 @@ export class PortfolioComponent implements OnInit {
     }
     this.urlPicsum = 'https://picsum.photos/v2/list?page='+this.page+'&limit=6';
     
-    this.getUrl(this.urlPicsum).subscribe(
+    this.api.getUrl(this.urlPicsum).subscribe(
       (data) => {
         this.gallery = data;
         console.log(data);
@@ -49,7 +47,7 @@ export class PortfolioComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.getUrl(this.urlChuck).subscribe(
+    this.api.getUrl(this.urlChuck).subscribe(
       (data) => {
         this.joke = data;
         this.jokeNotFound = false;
