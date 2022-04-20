@@ -17,9 +17,16 @@ export class ApiService {
   imgPicsum(id:number){
     return 'https://picsum.photos/id/' + id + '/640/480'
   }
-  
+
   listPicsum(num:number){
     return 'https://picsum.photos/v2/list?page='+num+'&limit=6'
   }
   
+  bigImgPicsum(id:number){
+    return 'https://picsum.photos/id/' + id + '/1280/960?'
+  }
+
+  imgInfo(id:number){
+   return 'https://picsum.photos/id/'+id+'/info'
+  }
 }

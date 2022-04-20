@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'
-import { HttpClient } from '@angular/common/http';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-details',
@@ -9,15 +9,15 @@ import { HttpClient } from '@angular/common/http';
 })
 export class DetailsComponent implements OnInit {
 
-  constructor(public http: HttpClient, private route:ActivatedRoute) { }
-  itemId ='';
+  constructor(private route:ActivatedRoute, public api:ApiService) { }
+  itemId = 0;
   itemInfo:any;
   imgSrc='./assets/images/loader.gif';
   gray= false;
   blur = 0;
 
   generateSrc(id=this.itemId,gray=false,blur=0){
-    this.imgSrc = 'https://picsum.photos/id/' + this.itemId + '/1280/960?'
+    this.imgSrc = this.api.bigImgPicsum(this.itemId);
     this.gray? this.imgSrc +='grayscale&': null;
     this.blur>0? this.imgSrc +='blur=' + this.blur : null;
     // if(this.gray){
@@ -43,16 +43,12 @@ export class DetailsComponent implements OnInit {
     this.generateSrc();
   }
   
-  getUrl(url:string){
-    return this.http.get(url);
-  };
-
 
   ngOnInit(): void {
     // On recuperer l'id dans la route active.
     this.itemId = this.route.snapshot.params['itemId'];
     // On charge les données correspondantes à l'image.
-    this.http.get('https://picsum.photos/id/'+this.itemId+'/info').subscribe( (data) =>{
+    this.api.getUrl(this.api.imgInfo(this.itemId)).subscribe( (data) =>{
       this.itemInfo = data;
       this.generateSrc(this.itemId);
     }
