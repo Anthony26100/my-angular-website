@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { ViewportScroller } from '@angular/common';
 import { ThisReceiver } from '@angular/compiler';
 import { ApiService } from 'src/app/services/api.service';
@@ -11,7 +10,7 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class PortfolioComponent implements OnInit {
 
-  constructor(public http: HttpClient, private scroll:ViewportScroller, public api:ApiService) {}
+  constructor(private scroll:ViewportScroller, public api:ApiService) {}
 
   joke:any;
   jokeNotFound = true;
