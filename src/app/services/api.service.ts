@@ -14,6 +14,9 @@ export class ApiService {
     return this.http.get(url);
   }
 
+  imgPicsum(id:number){
+    return 'https://picsum.photos/id/' + id + '/640/480'
+  }
   
   listPicsum(num:number){
     return 'https://picsum.photos/v2/list?page='+num+'&limit=6'

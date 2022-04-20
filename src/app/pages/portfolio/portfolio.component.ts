@@ -33,6 +33,7 @@ export class PortfolioComponent implements OnInit {
         this.page = nb;
         break;
     }
+    
     this.urlPicsum = this.api.listPicsum(this.page);
     this.api.getUrl(this.urlPicsum).subscribe(
       (data) => {
