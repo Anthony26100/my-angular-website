@@ -1,3 +1,26 @@
-<h1>{{itemInfo?.author}}</h1>
-<div>{{itemInfo?.download_url}}</div>
-<p>{{itemInfo?.height}}</p>
+<h1 class="text-center mt-3">{{itemInfo?.author}}</h1>
+<br>
+
+<img  class="card" >
+<div class="card ">
+    <img class="card-img-top" [src]="imgSrc" [alt]=" 'Picture from' + itemInfo?.author ">
+        <div class="card-body">
+        <h5 class="card-title d-flex  justify-content-center">{{itemInfo?.author}}</h5>
+        <p class="d-flex justify-content-center">Hauteur : {{itemInfo?.height}}</p>
+        <p class="d-flex justify-content-center">Largeur : {{itemInfo?.width}}</p>
+        <p class="d-flex justify-content-center">Id : {{itemInfo?.id}}</p>
+        <p class="d-flex justify-content-center">{{itemId}}</p>
+        <p class="card-text d-flex  justify-content-center">Differents formats</p>
+        <a href="{{itemInfo?.download_url}}" class="btn btn-primary d-flex  justify-content-center" target="_blank">Download Image</a>
+        <a (click)="grayscale()" class="btn btn-primary d-flex justify-content-center ">
+            <span *ngIf="!gray">Image Couleur Noir/Blanc ?</span>
+            <span *ngIf="gray">Image en Couleur ?</span>    
+        </a>
+        <a (click)="addBlur()" class="btn btn-primary d-flex justify-content-center" >
+            Ajouter du flou ? {{blur}}
+        </a>
+        <a [routerLink]="'/portfolio/'" class="btn btn-primary d-flex justify-content-center">Retour Portfolio</a>
+        </div>
+  </div>
+
+
