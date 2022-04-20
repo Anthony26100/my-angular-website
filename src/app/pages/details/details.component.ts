@@ -39,7 +39,7 @@ export class DetailsComponent implements OnInit {
   }
 
   delBlur(){
-    this.blur<10?this.blur--:this.blur=0;
+    this.blur>0?this.blur--:this.blur=0;
     this.generateSrc();
   }
   
