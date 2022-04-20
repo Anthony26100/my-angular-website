@@ -50,7 +50,7 @@ export class DetailsComponent implements OnInit {
     // On charge les données correspondantes à l'image.
     this.api.getUrl(this.api.imgInfo(this.itemId)).subscribe( (data) =>{
       this.itemInfo = data;
-      this.generateSrc(this.itemId);
+      this.generateSrc();
     }
     );
   }
