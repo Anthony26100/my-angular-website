@@ -12,7 +12,7 @@ export class DetailsComponent implements OnInit {
   constructor(public http: HttpClient, private route:ActivatedRoute) { }
   itemId ='';
   itemInfo:any;
-  imgSrc='';
+  imgSrc='./assets/images/loader.gif';
   gray= false;
   blur = 0;
 

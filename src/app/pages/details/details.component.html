@@ -2,7 +2,7 @@
 <br>
 
 <img  class="card" >
-<div class="card ">
+<div class="card m-5">
     <img class="card-img-top" [src]="imgSrc" [alt]=" 'Picture from' + itemInfo?.author ">
         <div class="card-body">
         <h5 class="card-title d-flex  justify-content-center">{{itemInfo?.author}}</h5>
@@ -20,7 +20,7 @@
             Ajouter du flou ? {{blur}}
         </a>
         <a (click)="delBlur()" class="btn btn-primary d-flex justify-content-center" >
-            Enlever du flou ? {{blur}}
+            Enlever du flou ?
         </a>
         <a [routerLink]="'/portfolio/'" class="btn btn-primary d-flex justify-content-center">Retour Portfolio</a>
         </div>
