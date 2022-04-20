@@ -37,6 +37,11 @@ export class DetailsComponent implements OnInit {
     this.blur<10?this.blur++:this.blur=0;
     this.generateSrc();
   }
+
+  delBlur(){
+    this.blur<10?this.blur--:this.blur=0;
+    this.generateSrc();
+  }
   
   getUrl(url:string){
     return this.http.get(url);
