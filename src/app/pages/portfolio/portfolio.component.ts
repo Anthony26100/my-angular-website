@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ViewportScroller } from '@angular/common';
 import { ThisReceiver } from '@angular/compiler';
 import { ApiService } from 'src/app/services/api.service';
+import { SettingsService } from 'src/app/services/settings.service';
 
 @Component({
   selector: 'app-portfolio',
@@ -10,7 +11,7 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class PortfolioComponent implements OnInit {
 
-  constructor(private scroll:ViewportScroller, public api:ApiService) {}
+  constructor(private scroll:ViewportScroller, public api:ApiService, public settings:SettingsService) {}
 
   joke:any;
   jokeNotFound = true;
@@ -54,6 +55,7 @@ export class PortfolioComponent implements OnInit {
       }
       
     )
+    this.settings.displayCarousel = false;
     this.loadPics();
   }
   
